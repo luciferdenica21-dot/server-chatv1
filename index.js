@@ -11,7 +11,7 @@ app.use(express.json({ limit: '100mb' }));
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
-mongoose.connect('mongodb://localhost:27017/service_chat')
+mongoose.connect('mongodb+srv://admin:<db_password>@cluster0.7lhbed6.mongodb.net/?appName=Cluster0')
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB connection error:", err));
 
@@ -155,5 +155,6 @@ io.on('connection', (socket) => {
     await broadcastManagerUpdate();
   });
 });
+
 
 server.listen(4000, () => console.log("Server running on port 4000"));
